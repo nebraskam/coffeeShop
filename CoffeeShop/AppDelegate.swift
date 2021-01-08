@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let homeViewController = HomeViewController(coffeeShop: CoffeeShop.shared)
         let orderViewController = OrderViewController()
-        CoffeeShop.shared.subscriber(orderViewController)
+        CoffeeShop.shared.subscribe(orderViewController)
         let homeNavigationVC = UINavigationController(rootViewController: homeViewController)
         let orderNavigationVC = UINavigationController(rootViewController: orderViewController)
         

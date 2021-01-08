@@ -9,8 +9,8 @@
 import Foundation
 
 protocol Subject: class {
-     func subscriber(_ subcriber: Subscriber)
-     func unsubscriber(_ subcriber: Subscriber)
+     func subscribe(_ subscribe: Subscribe)
+     func unsubscribe(_ subscribe: Subscribe)
      func notify(coffee: Coffee)
 }
 
@@ -20,7 +20,7 @@ protocol CoffeeShopProtocol: class {
 
 class CoffeeShop: Subject, CoffeeShopProtocol {
     
-    private var subscribers: [Subscriber] = []
+    private var subscribers: [Subscribe] = []
     private var orders: [Coffee] = [] {
         didSet {
             guard orders.count > 0 else { return }
@@ -31,11 +31,11 @@ class CoffeeShop: Subject, CoffeeShopProtocol {
     static let shared: CoffeeShop = CoffeeShop()
     private init() {}
     
-    func subscriber(_ subcriber: Subscriber) {
-        self.subscribers.append(subcriber)
+    func subscribe(_ subscribe: Subscribe) {
+        self.subscribers.append(subscribe)
     }
     
-    func unsubscriber(_ subcriber: Subscriber) {
+    func unsubscribe(_ subscribe: Subscribe) {
         //TODO: delete subscriber
     }
     
@@ -60,6 +60,6 @@ class CoffeeShop: Subject, CoffeeShopProtocol {
     }
 }
 
-protocol Subscriber {
+protocol Subscribe {
     func update(coffee: Coffee)
 }

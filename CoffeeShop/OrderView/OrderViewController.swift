@@ -63,7 +63,7 @@ extension OrderViewController: UITableViewDataSource {
 }
 
 
-extension OrderViewController: Subscriber {
+extension OrderViewController: Subscribe {
     func update(coffee: Coffee) {
         self.orders.append(coffee)
     }
