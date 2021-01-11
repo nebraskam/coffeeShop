@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol CoffeeExtra {
+    func add()
+    func remove()
+}
 
 class Coffee {
     var price: Double
@@ -17,29 +21,64 @@ class Coffee {
     }
 }
 
-extension Coffee {
+
+class MilkCoffeeDecorator: CoffeeExtra {
     
-    func addMilk() {
-        price += 1000
+    let coffee: Coffee
+    private let extra: Double = 1000
+    
+    init(coffee: Coffee) {
+        self.coffee = coffee
     }
     
-    func removeMilk() {
-        price -= 1000
+    func add() {
+        print("agrego milk")
+        coffee.price += extra
     }
     
-    func addCocoa() {
-        price += 800
+    func remove() {
+        print("remuevo milk")
+        coffee.price -= extra
+    }
+}
+
+
+class CocoaCoffeeDecorator: CoffeeExtra {
+    
+    let coffee: Coffee
+    private let extra: Double = 500
+    
+    init(coffee: Coffee) {
+        self.coffee = coffee
     }
     
-    func removeCocoa() {
-        price -= 800
+    func add() {
+        print("agrego cocoa")
+        coffee.price += extra
     }
     
-    func addWhip() {
-        price += 900
+    func remove() {
+        print("remuevo cocoa")
+        coffee.price -= extra
+    }
+}
+
+
+class WhipCoffeeDecorator: CoffeeExtra {
+    let coffee: Coffee
+    private let extra: Double = 700
+    
+    init(coffee: Coffee) {
+        self.coffee = coffee
     }
     
-    func removeWhip() {
-        price -= 900
+    func add(){
+        print("agrego crema")
+        coffee.price += extra
+    }
+    
+    func remove() {
+        print("remuevo crema")
+        coffee.price -= extra
     }
 }

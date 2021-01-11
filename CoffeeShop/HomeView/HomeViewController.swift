@@ -12,7 +12,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     let homeView = HomeView()
-    var coffee = Coffee(price: 2000)
+    var coffeeDraft = Coffee(price: 2000)
     let coffeeShop: CoffeeShopProtocol
     
     init(coffeeShop: CoffeeShopProtocol) {
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     }
     
     func updatePrice() {
-        homeView.priceLabel.text = "Precio: \(coffee.price)"
+        homeView.priceLabel.text = "Precio: \(coffeeDraft.price)"
     }
     
 }
@@ -53,36 +53,42 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewDelegate {
   
     func milkSwitchChanged(isOn: Bool) {
+        let decorator = MilkCoffeeDecorator(coffee: coffeeDraft)
         if isOn {
-            coffee.addMilk()
+            decorator.add()
         } else {
-            coffee.removeMilk()
+            decorator.remove()
         }
         
         updatePrice()
     }
     
     func cocoaSwitchChanged(isOn: Bool) {
+        let decorator = CocoaCoffeeDecorator(coffee: coffeeDraft)
+
         if isOn {
-            coffee.addCocoa()
+            decorator.add()
         } else {
-            coffee.removeCocoa()
+            decorator.remove()
         }
         updatePrice()
     }
     
     func whipSwitchChanged(isOn: Bool) {
+        let decorator = WhipCoffeeDecorator(coffee: coffeeDraft)
+        
         if isOn {
-            coffee.addWhip()
-        }else {
-            coffee.removeWhip()
-        }
-        updatePrice()
+               decorator.add()
+           } else {
+               decorator.remove()
+           }
+           updatePrice()
     }
    
     func buyButtonTapped() {
         showBuyAlert()
-        coffeeShop.addOrder(coffee: coffee)
+        let orderCoffee = Coffee(price: coffeeDraft.price)
+        coffeeShop.addOrder(coffee: orderCoffee)
     }
     
     private func showBuyAlert() {
