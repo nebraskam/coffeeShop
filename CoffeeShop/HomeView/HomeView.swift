@@ -21,7 +21,7 @@ class HomeView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Indique cómo quiere su café:"
+        label.text = NSLocalizedString("Title", comment: "")
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 0
         return label
@@ -29,8 +29,9 @@ class HomeView: UIView {
     
     let buyButton: UIButton = {
         let button = UIButton()
+        let buttonText = NSLocalizedString("Buy", comment: "")
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Comprar", for: .normal)
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 5
@@ -41,25 +42,25 @@ class HomeView: UIView {
     let priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Precio"
+        label.text = NSLocalizedString("Price", comment: "")
         return label
     }()
     
     let milkIngredientView: IngredientView = {
         let ingredientView = IngredientView()
-        ingredientView.selectLabel.text = "Con leche"
+        ingredientView.selectLabel.text = NSLocalizedString("Milk", comment: "")
         return ingredientView
     }()
     
     let cocoaIngredientView: IngredientView = {
         let ingredientView = IngredientView()
-        ingredientView.selectLabel.text = "Con cocoa"
+        ingredientView.selectLabel.text = NSLocalizedString("Cocoa", comment: "")
         return ingredientView
     }()
     
     let whipIngredientView: IngredientView = {
         let ingredientView = IngredientView()
-        ingredientView.selectLabel.text = "Con crema"
+        ingredientView.selectLabel.text = NSLocalizedString("Whip", comment: "")
         return ingredientView
     }()
     

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     let homeView = HomeView()
     var coffeeDraft = Coffee(price: 2000)
     let coffeeShop: CoffeeShopProtocol
+    let priceText = NSLocalizedString("Price", comment: "")
     
     init(coffeeShop: CoffeeShopProtocol) {
         self.coffeeShop = coffeeShop
@@ -41,11 +42,11 @@ class HomeViewController: UIViewController {
             homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        navigationItem.title = "Coffee shop"
+        navigationItem.title = NSLocalizedString("NavigationTitle", comment: "")
     }
     
     func updatePrice() {
-        homeView.priceLabel.text = "Precio: \(coffeeDraft.price)"
+        homeView.priceLabel.text = "\(priceText): \(coffeeDraft.price)"
     }
     
 }
@@ -92,8 +93,11 @@ extension HomeViewController: HomeViewDelegate {
     }
     
     private func showBuyAlert() {
-        let alert = UIAlertController(title: "Compra procesada", message: "Te notificaremos cuando se encuentre lista", preferredStyle: .alert)
-        let doneButton = UIAlertAction(title: "OK", style: .default)
+        let alertTitle = NSLocalizedString("AlertTitle", comment: "")
+        let alertMessage = NSLocalizedString("AlertMessage", comment: "")
+        let alertButton = NSLocalizedString("AlertButton", comment: "")
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let doneButton = UIAlertAction(title: alertButton, style: .default)
         alert.addAction(doneButton)
         self.present(alert, animated: true)
     }

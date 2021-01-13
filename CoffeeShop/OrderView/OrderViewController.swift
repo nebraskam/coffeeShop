@@ -30,8 +30,12 @@ class OrderViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    deinit {
+        CoffeeShop.shared.unsubscribe(self)
+    }
+    
     private func setupView() {
-        navigationItem.title = "Ordenes" 
+        navigationItem.title = NSLocalizedString("Orders", comment: "")
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -56,8 +60,8 @@ extension OrderViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "exampleCell")
         let coffee = self.orders[indexPath.row]
-        cell.textLabel?.text = "Orden #\(indexPath.row)"
-        cell.detailTextLabel?.text = "Precio \(coffee.price)"
+        cell.textLabel?.text = "\(NSLocalizedString("Order", comment: ""))\(indexPath.row)"
+        cell.detailTextLabel?.text = "\(NSLocalizedString("Price", comment: "")): \(coffee.price)"
         return cell
     }
 }

@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  CoffeeShop
+
+  Created by n.melendez.azocar on 1/12/21.
+  Copyright © 2021 nebraska. All rights reserved.
+*/
+
+"NavigationTitle" = "Coffee Shop";
+
+// Home View//
+
+"Buy" = "Buy";
+"Milk" = "With milk";
+"Cocoa" = "With cocoa";
+"Whip" = "With whip";
+"Price" = "Price";
+"Title" = "How do you want your coffee?";
+"AlertTitle" = "Purchase processed";
+"AlertMessage" = "We will notify you when it is ready";
+"AlertButton" = "Ok";
+
+
+//Order View//
+
+"Order" = "Order #";
+"Orders" = "Orders";
